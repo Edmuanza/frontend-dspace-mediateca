@@ -1,0 +1,287 @@
+<!-- ============================================= -->
+<!-- PERFIL DE ORGANIZACIÓN (MOP)                  -->
+<!-- ============================================= -->
+
+<!-- Botón de retroceso (si aplica) -->
+@if (showBackButton$ | async) {
+  <ds-results-back-button [back]="back"></ds-results-back-button>
+}
+
+<!-- Visor IIIF (si aplica a la organización) -->
+@if (iiifEnabled) {
+  <div class="row">
+    <div class="col-12">
+      <ds-mirador-viewer
+        id="iiif-viewer"
+        [object]="object"
+        [searchable]="iiifSearchEnabled"
+        [query]="iiifQuery$ | async">
+      </ds-mirador-viewer>
+    </div>
+  </div>
+}
+
+<!-- ============================================= -->
+<!-- CABECERA: TÍTULO + MENÚ DE EDICIÓN            -->
+<!-- ============================================= -->
+<div class="d-flex flex-row">
+  <ds-item-page-title-field [item]="object" class="me-auto">
+  </ds-item-page-title-field>
+  <ds-dso-edit-menu></ds-dso-edit-menu>
+</div>
+
+<!-- ============================================= -->
+<!-- CUERPO: DOS COLUMNAS                          -->
+<!-- ============================================= -->
+<div class="row">
+
+  <!-- ============================================ -->
+  <!-- COLUMNA IZQUIERDA (col-md-4)                 -->
+  <!-- ============================================ -->
+  <div class="col-12 col-md-4">
+
+    <!-- Miniatura / logo -->
+    @if (!(mediaViewer.image || mediaViewer.video)) {
+      <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+        <ds-thumbnail [thumbnail]="object?.thumbnail | async"></ds-thumbnail>
+      </ds-metadata-field-wrapper>
+    }
+    @if (mediaViewer.image || mediaViewer.video) {
+      <div class="mb-2">
+        <ds-media-viewer [item]="object"></ds-media-viewer>
+      </div>
+    }
+
+    <!-- Archivos adjuntos -->
+    <ds-item-page-file-section [item]="object"></ds-item-page-file-section>
+
+    <!-- Fecha de ingreso al repositorio -->
+    <ds-item-page-date-field [item]="object"></ds-item-page-date-field>
+
+    <!-- ========================================== -->
+    <!-- IDENTIDAD INSTITUCIONAL (MOP)              -->
+    <!-- ========================================== -->
+
+    <!-- Nombre oficial -->
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['mop.nombreOficial']"
+      [label]="'Nombre oficial'">
+    </ds-generic-item-page-field>
+
+    <!-- Acrónimo / Siglas -->
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['mop.acronimo']"
+      [label]="'Acrónimo / Siglas'">
+    </ds-generic-item-page-field>
+
+    <!-- Tipo de organización -->
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['mop.tipoDeOrganizacion']"
+      [label]="'Tipo de organización'">
+    </ds-generic-item-page-field>
+
+    <!-- Fecha de fundación -->
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['mop.fechaFundacion']"
+      [label]="'Fecha de fundación'">
+    </ds-generic-item-page-field>
+
+    <!-- Fecha de disolución (si aplica) -->
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['mop.fechaDisolucion']"
+      [label]="'Fecha de disolución'">
+    </ds-generic-item-page-field>
+
+    <!-- Ubicación geográfica -->
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['mop.ubicacion']"
+      [label]="'Ubicación'">
+    </ds-generic-item-page-field>
+
+    <!-- URI persistente del agente -->
+    <ds-item-page-uri-field
+      [item]="object"
+      [fields]="['mop.uriAgente']"
+      [label]="'URI persistente'">
+    </ds-item-page-uri-field>
+
+    <!-- ========================================== -->
+    <!-- ESTATUS FEDERADO (solo UnidadInformacion)  -->
+    <!-- ========================================== -->
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['mop.tieneEstatusFederado']"
+      [label]="'Estatus federado'">
+    </ds-generic-item-page-field>
+
+    <!-- ========================================== -->
+    <!-- DATOS DE CONTACTO                          -->
+    <!-- ========================================== -->
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['mop.correoElectronico']"
+      [label]="'Correo electrónico'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['mop.telefonoMovil', 'mop.telefono']"
+      [label]="'Teléfono'">
+    </ds-generic-item-page-field>
+
+    <ds-item-page-uri-field
+      [item]="object"
+      [fields]="['mop.sitioWeb']"
+      [label]="'Sitio web'">
+    </ds-item-page-uri-field>
+
+    <ds-item-page-uri-field
+      [item]="object"
+      [fields]="['mop.perfilRedSocial']"
+      [label]="'Perfil en red social'">
+    </ds-item-page-uri-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['mop.direccionPostal']"
+      [label]="'Dirección postal'">
+    </ds-generic-item-page-field>
+
+  </div>
+
+  <!-- ============================================ -->
+  <!-- COLUMNA DERECHA (col-md-8)                   -->
+  <!-- ============================================ -->
+  <div class="col-12 col-md-8">
+
+    <!-- ========================================== -->
+    <!-- DESCRIPCIÓN INSTITUCIONAL                  -->
+    <!-- ========================================== -->
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['mop.descripcionInstitucional']"
+      [label]="'Descripción institucional'">
+    </ds-generic-item-page-field>
+
+    <!-- ========================================== -->
+    <!-- CONTENIDOS GESTIONADOS / EDITADOS          -->
+    <!-- ========================================== -->
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'gestionaContenido'"
+      [label]="'Publica / Gestiona'">
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'editaContenido'"
+      [label]="'Edita'">
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'esAutorDelContenido'"
+      [label]="'Autor de'">
+    </ds-related-items>
+
+    <!-- ========================================== -->
+    <!-- PROFESIONALES RELACIONADOS                 -->
+    <!-- ========================================== -->
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'contrataVinculoLaboral'"
+      [label]="'Profesionales vinculados'">
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'tieneMiembro'"
+      [label]="'Miembros de la asociación'">
+    </ds-related-items>
+
+    <!-- ========================================== -->
+    <!-- RELACIONES CON OTRAS ORGANIZACIONES        -->
+    <!-- ========================================== -->
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'colaboraCon'"
+      [label]="'Colabora con'">
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'supervisaA'"
+      [label]="'Supervisa a'">
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'esSupervisadaPor'"
+      [label]="'Supervisada por'">
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'tieneOrganizacionSubordinada'"
+      [label]="'Organizaciones subordinadas'">
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'esSubordinadaA'"
+      [label]="'Subordinada a'">
+    </ds-related-items>
+
+    <!-- ========================================== -->
+    <!-- HISTORIA INSTITUCIONAL                     -->
+    <!-- ========================================== -->
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'fusionadaCon'"
+      [label]="'Fusionada con'">
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'resultadoDeFusion'"
+      [label]="'Resultado de fusión'">
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'resultadoDeDisolucionDe'"
+      [label]="'Resultado de disolución de'">
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'dioOrigenA'"
+      [label]="'Dio origen a'">
+    </ds-related-items>
+
+    <!-- ========================================== -->
+    <!-- COLECCIONES A LAS QUE PERTENECE            -->
+    <!-- ========================================== -->
+    <ds-item-page-collections [item]="object"></ds-item-page-collections>
+
+   
+    <div class="mt-4">
+      <a class="btn btn-outline-primary"
+         role="button"
+         [routerLink]="[itemPageRoute + '/full']"
+         tabindex="0">
+        <i class="fas fa-info-circle"></i>
+        {{"item.page.link.full" | translate}}
+      </a>
+    </div>
+
+  </div>
+
+</div>

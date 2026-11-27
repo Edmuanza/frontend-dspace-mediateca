@@ -1,0 +1,100 @@
+{
+  "options": {
+    "dropEnabled": true,
+    "footerPanelEnabled": true,
+    "headerPanelEnabled": true,
+    "leftPanelEnabled": true,
+    "limitLocales": false,
+    "overrideFullScreen": false,
+    "pagingEnabled": true,
+    "preferMediaElementExtension": false,
+    "rightPanelEnabled": true,
+    "clickToZoomEnabled": true,
+    "saveUserSettings": true,
+    "animationDuration": 250,
+    "searchWithinEnabled": true,
+    "useArrowKeysToNavigate": true,
+    "zoomToSearchResultEnabled": true,
+    "zoomToBoundsEnabled": true
+  },
+  "modules": {
+    "avCenterPanel": {
+      "options": {
+        "mostSpecificRequiredStatement": true
+      }
+    },
+    "downloadDialogue": {
+      "options": {
+        "selectionEnabled": true,
+        "downloadCurrentViewEnabled": true,
+        "downloadWholeImageHighResEnabled": true,
+        "downloadWholeImageLowResEnabled": true
+      }
+    },
+    "headerPanel": {
+      "options": {
+        "localeToggleEnabled": false,
+        "settingsButtonEnabled": true
+      }
+    },
+    "pagingHeaderPanel": {
+      "options": {
+        "pagingToggleEnabled": true,
+        "autoCompleteBoxEnabled": true,
+        "galleryButtonEnabled": true
+      }
+    },
+    "openSeadragonCenterPanel": {
+      "options": {
+        "autoHideControls": false,
+        "showHomeControl": true,
+        "showAdjustImageControl": true
+      }
+    },
+    "mediaElementCenterPanel": {
+      "options": {
+        "autoPlayOnSetTarget": false
+      }
+    },
+    "footerPanel": {
+      "options": {
+        "downloadEnabled": true,
+        "fullscreenEnabled": true,
+        "moreInfoEnabled": true,
+        "shareEnabled": true
+      }
+    },
+    "pdfCenterPanel": {
+      "options": {
+        "usePdfJs": true,
+        "pdfJsLib": "/assets/uv/pdfjs/pdf.min.js",
+        "pdfJsWorker": "/assets/uv/pdfjs/pdf.worker.min.js",
+        "maxScale": 5,
+        "minScale": 0.7,
+        "titleEnabled": true,
+        "subtitleEnabled": true
+      }
+    },
+    "searchFooterPanel": {
+      "options": {
+        "pageModeEnabled": true,
+        "positionMarkerEnabled": true,
+        "downloadEnabled": true,
+        "fullscreenEnabled": true,
+        "moreInfoEnabled": true,
+        "shareEnabled": true
+      }
+    },
+    "shareDialogue": {
+      "options": {
+        "embedEnabled": true,
+        "shareEnabled": true,
+        "shareManifestsEnabled": true,
+        "embedPath": "/uv.html",
+        "embedHost": null,
+        "embedPort": null,
+        "embedTemplate": "<iframe src=\"{0}\" width=\"{1}\" height=\"{2}\" allowfullscreen frameborder=\"0\" title=\"{3}\"></iframe>"
+      }
+    }
+  }
+}

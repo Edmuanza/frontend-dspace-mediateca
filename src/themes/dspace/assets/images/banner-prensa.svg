@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="6369.3" height="4221.3" version="1.1"
+     viewBox="0 0 6369.3 4221.3" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <radialGradient id="radialGradient16604" cx="104.36" cy="143.68" r="178.92"
+                    gradientTransform="matrix(-2.0142 .014358 -.014036 -1.9691 316.57 439.81)"
+                    gradientUnits="userSpaceOnUse"><stop stop-color="#9cd9eb" stop-opacity=".99997" offset=".3"/>
+      <stop
+        stop-color="#0b1723" offset=".9999"/>
+    </radialGradient></defs>
+  <g transform="matrix(29.807 0 0 29.807 3158.3 -4599.2)"><rect x="-106.86" y="153.32" width="215.44" height="143.87" fill="#9cd9eb" stroke-width=".27182"/>
+    <rect x="-160.82" y="67.548" width="357.85" height="260.56" rx="0" ry="0" fill="url(#radialGradient16604)"
+          stroke-width="8.1021"/>
+    <circle cx="102.34" cy="159.39" r="90.61" fill="#68aec8" stroke-width="1.2583"/>
+    <circle cx="102.54" cy="159.18" r="68.123" fill="#127592" stroke-width=".94604"/>
+    <circle cx="102.55" cy="159.19" r="45.224" fill="#003f58" stroke-width=".62804"/>
+    <circle cx="102.47" cy="159.32" r="22.428" fill="#0b1723" stroke-width=".31147"/></g></svg>

@@ -1,0 +1,7 @@
+<div class="exhibition-wrapper">
+  <div *ngIf="loading" class="state-message">Cargando exposición...</div>
+  <div *ngIf="error" class="state-message error">{{ error }}</div>
+  <div *ngIf="!loading && !error" class="panel-truck-container">
+    <panel-truck [attr.screenplaySrc]="screenplayUrl"></panel-truck>
+  </div>
+</div>

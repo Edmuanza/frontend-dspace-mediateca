@@ -1,0 +1,5 @@
+rest:
+  ssl: false
+  host: 190.92.127.19
+  port: 8080
+  nameSpace: /server

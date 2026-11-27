@@ -1,0 +1,23 @@
+@if (isViewerAvailable) {
+  <div id="mirador-viewer-container">
+    @if (iframeViewerUrl | async; as url) {
+      <iframe
+        [src]="url"
+        width="100%"
+        height="600px"
+        frameborder="0"
+        allowfullscreen
+        class="mirador-iframe"
+        title="Mirador Viewer">
+      </iframe>
+    } @else {
+      <div class="viewer-placeholder">
+        <p>{{ viewerMessage }}</p>
+      </div>
+    }
+  </div>
+} @else {
+  <div class="viewer-placeholder">
+    <p>{{ viewerMessage }}</p>
+  </div>
+}

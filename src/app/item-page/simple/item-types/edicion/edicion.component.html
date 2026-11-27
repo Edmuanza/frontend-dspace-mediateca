@@ -1,0 +1,40 @@
+@if (showBackButton$ | async) {
+  <ds-results-back-button [back]="back"></ds-results-back-button>
+}
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex flex-row">
+        <ds-item-page-title-field [item]="object" class="me-auto"></ds-item-page-title-field>
+        <ds-dso-edit-menu></ds-dso-edit-menu>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+        <ds-thumbnail [thumbnail]="object?.thumbnail | async"></ds-thumbnail>
+      </ds-metadata-field-wrapper>
+
+      <ds-generic-item-page-field [item]="object" [fields]="['mop.titulo']" [label]="'Título'"></ds-generic-item-page-field>
+      <ds-generic-item-page-field [item]="object" [fields]="['mop.numeroEdicion']" [label]="'Número de edición'"></ds-generic-item-page-field>
+      <ds-generic-item-page-field [item]="object" [fields]="['mop.volumenDeEdicion']" [label]="'Volumen'"></ds-generic-item-page-field>
+      <ds-generic-item-page-field [item]="object" [fields]="['mop.fechaPublicacion']" [label]="'Fecha de publicación'"></ds-generic-item-page-field>
+      <ds-generic-item-page-field [item]="object" [fields]="['mop.tipoEdicion']" [label]="'Tipo de edición'"></ds-generic-item-page-field>
+      <ds-generic-item-page-field [item]="object" [fields]="['mop.issn']" [label]="'ISSN'"></ds-generic-item-page-field>
+      <ds-generic-item-page-field [item]="object" [fields]="['mop.idiomaPrincipal']" [label]="'Idioma'"></ds-generic-item-page-field>
+    </div>
+
+    <div class="col-md-8">
+      <ds-generic-item-page-field [item]="object" [fields]="['mop.descripcion']" [label]="'Descripción'"></ds-generic-item-page-field>
+    </div>
+
+    <div>
+      <a class="btn btn-outline-primary" role="button" [routerLink]="[itemPageRoute + '/full']" tabindex="0">
+        <i class="fas fa-info-circle"></i> {{"item.page.link.full" | translate}}
+      </a>
+    </div>
+  </div>
+</div>

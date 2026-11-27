@@ -1,0 +1,32 @@
+<div class="modal-header">
+  <h4 class="modal-title">
+    {{ articleTitle || 'Visor de PDF' }}
+  </h4>
+  <button type="button" class="close" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body pdf-modal-body">
+  <ngx-extended-pdf-viewer
+    [src]="pdfUrl"
+    [page]="startPage"
+    [showSpinner]="true"
+    [showSidebarButton]="true"
+    [showOpenFileButton]="false"
+    [showPrintButton]="true"
+    [showDownloadButton]="true"
+    [showFindButton]="true"
+    [showPagingButtons]="true"
+    [showZoomButtons]="true"
+    height="80vh"
+    [textLayer]="true"
+    [showHandToolButton]="true">
+  </ngx-extended-pdf-viewer>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="close()">
+    Cerrar
+  </button>
+</div>

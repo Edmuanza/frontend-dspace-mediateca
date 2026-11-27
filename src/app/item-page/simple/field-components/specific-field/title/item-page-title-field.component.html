@@ -1,0 +1,11 @@
+<h1 class="item-page-title-field">
+  <!-- Nombre del ítem -->
+  <span class="dont-break-out">{{ dsoNameService.getName(item) }}</span>
+  
+  <!-- Badge de verificación SOLO para profesionales -->
+  @if (item.firstMetadataValue('dspace.entity.type'); as type) {
+    @if (type === 'Profesional') {
+      <i class="fas fa-check-circle verified-icon ms-2" title="Perfil verificado"></i>
+    }
+  }
+</h1>

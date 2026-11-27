@@ -1,0 +1,9 @@
+<div *ngIf="uvLoading" class="uv-loading">
+  <p>Cargando visor IIIF...</p>
+</div>
+
+<div *ngIf="uvError" class="uv-error">
+  <p>No se pudo cargar el visor IIIF para este ítem.</p>
+</div>
+
+<div #uvContainer id="uv" class="uv-container" [class.hidden]="uvLoading || uvError"></div>

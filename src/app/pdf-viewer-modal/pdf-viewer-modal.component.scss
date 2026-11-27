@@ -1,0 +1,21 @@
+.pdf-modal-body {
+  padding: 0;
+  height: 80vh;
+  overflow: hidden;
+  position: relative;
+
+  ngx-extended-pdf-viewer {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.modal-header {
+  background-color: #008B8B; 
+  color: white;
+
+  .close {
+    color: white;
+    opacity: 1;
+  }
+}

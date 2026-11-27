@@ -1,0 +1,47 @@
+@if (showBackButton$ | async) {
+  <ds-results-back-button [back]="back"></ds-results-back-button>
+}
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex flex-row">
+        <ds-item-page-title-field [item]="object" class="me-auto"></ds-item-page-title-field>
+        <ds-dso-edit-menu></ds-dso-edit-menu>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+        <ds-thumbnail [thumbnail]="object?.thumbnail | async"></ds-thumbnail>
+      </ds-metadata-field-wrapper>
+
+      <!-- Campos MOP del Profesional -->
+      <ds-generic-item-page-field [item]="object" [fields]="['mop.nombreYApellido']" [label]="'Nombre y apellidos'"></ds-generic-item-page-field>
+      <ds-generic-item-page-field [item]="object" [fields]="['mop.fechaNacimiento']" [label]="'Fecha de nacimiento'"></ds-generic-item-page-field>
+      <ds-generic-item-page-field [item]="object" [fields]="['mop.fechaFallecimiento']" [label]="'Fecha de Fallecimiento'"></ds-generic-item-page-field>
+      <ds-generic-item-page-field [item]="object" [fields]="['mop.genero']" [label]="'Género'"></ds-generic-item-page-field>
+      <ds-generic-item-page-field [item]="object" [fields]="['mop.formacionEducativa']" [label]="'Formación Educativa'"></ds-generic-item-page-field>
+
+      <div class="mt-4">
+        <ds-related-items
+          [parentItem]="object"
+          [relationType]="'esAutorDelContenido'"
+          [label]="'Autor de:'">
+        </ds-related-items>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <ds-generic-item-page-field [item]="object" [fields]="['mop.descripcion']" [label]="'Trayectoria '"></ds-generic-item-page-field>
+    </div>
+
+    <div>
+      <a class="btn btn-outline-primary" role="button" [routerLink]="[itemPageRoute + '/full']" tabindex="0">
+        <i class="fas fa-info-circle"></i> {{"item.page.link.full" | translate}}
+      </a>
+    </div>
+  </div>
+</div>
